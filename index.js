@@ -13,7 +13,9 @@ const newFreelancers = [
 const randomArray = [];
 
 random();
-console.log(randomArray);
+
+const avgPrice = document.querySelector("#avg-price");
+
 const maxFreelancers = freelancerArray.length + newFreelancers.length;
 
 const addFreeLancerIntervalId = setInterval(addFreelancer, 1000, randomArray);
@@ -36,18 +38,14 @@ function startingPriceAverage() {
         var startingPrice = freelancerArray[i].StartingPrice.split("$")[1];
         sum += Number(startingPrice);
     }
-    const avg = (sum / freelancerArray.length).toFixed(2);
+    let avg = (sum / freelancerArray.length).toFixed(2);
 
-    const avgPrice = document.querySelector("#avg-price");
     avgPrice.replaceWith(avg);
 }
 
-function addFreelancer(randomArray) {
-    randomArray.forEach((i) => {
-        freelancerArray.push(newFreelancers[randomArray[i]])
-        console.log(randomArray[i]);
-    });
-
+function addFreelancer() {
+    freelancerArray.push(newFreelancers[randomArray[0]]);
+    randomArray.shift();
 
     render();
     if (freelancerArray.length >= maxFreelancers){
