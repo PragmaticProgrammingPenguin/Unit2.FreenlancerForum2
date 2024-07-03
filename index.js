@@ -40,7 +40,7 @@ function startingPriceAverage() {
     }
     let avg = (sum / freelancerArray.length).toFixed(2);
 
-    avgPrice.replaceWith(avg);
+    avgPrice.innerText = avg;
 }
 
 function addFreelancer() {
